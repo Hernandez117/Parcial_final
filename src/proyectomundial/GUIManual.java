@@ -54,6 +54,9 @@ public class GUIManual extends JFrame {
     
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
+    
+    private JPanel jPanelMenuIniciarseccion;
+    private JLabel btnIniciarseccion;
         
     // Elementos de panel de contenido
     private JPanel jPanelRight;
@@ -100,7 +103,7 @@ public class GUIManual extends JFrame {
         accionHome();
         
     }
-    
+   
     
     private void initComponents() {
 
@@ -125,6 +128,9 @@ public class GUIManual extends JFrame {
         
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
+        
+        jPanelMenuIniciarseccion = new JPanel();
+        btnIniciarseccion = new JLabel();
         
         // Pinta el logo de la aplicación
         pintarLogo();
@@ -424,7 +430,67 @@ public class GUIManual extends JFrame {
         jPanelMain.revalidate();        
     }
     
-    
+    String[] usuarios =  usuarios = new String[5][2];
+        usuarios[0][0] = "usuario1";
+        usuarios[0][1] = "Password1";
+        
+        usuarios[1][0] = "usuario2";
+        usuarios[1][1] = "Password2";
+        
+        usuarios[2][0] = "usuario3";
+        usuarios[2][1] = "Password3";
+        
+        usuarios[3][0] = "usuario4";
+        usuarios[3][1] = "Password4";
+        
+        usuarios[4][0] = "usuario5";
+        usuarios[4][1] = "Password5";
+        String[] contraseñas = 
+        boolean haySesion = false;
+
+        while (true) {
+           
+            String opcion = JOptionPane.showInputDialog(
+                "1. Opción 1\n" +
+                "2. Opción 2\n" +
+                "3. Sesión\n" +
+                "4. Salir\n\n" +
+                "Ingrese el número de opción:"
+            );
+
+           
+            if (opcion == null || opcion.equals("4")) {
+                
+                break;
+            } else if (opcion.equals("1")) {
+                JOptionPane.showMessageDialog(null, "Opción 1 seleccionada");
+            } else if (opcion.equals("2")) {
+                JOptionPane.showMessageDialog(null, "Opción 2 seleccionada");
+            } else if (opcion.equals("3")) {
+                             String usuario = JOptionPane.showInputDialog("Ingrese el usuario:");
+                String contraseña = JOptionPane.showInputDialog("Ingrese la contraseña:");
+
+             
+                boolean credencialesValidas = false;
+                for (int i = 0; i < usuarios.length; i++) {
+                    if (usuarios[i].equals(usuario) && contraseñas[i].equals(contraseña)) {
+                        credencialesValidas = true;
+                        break;
+                    }
+                }
+
+                if (credencialesValidas) {
+                    haySesion = true;
+                    JOptionPane.showMessageDialog(null, "Credenciales válidas. Sesión iniciada.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales inválidas. Intente nuevamente.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Opción inválida. Intente nuevamente.");
+            }
+        }
+    }
+}
     
     /**
      * Función que se encarga de ajustar los elementos gráficos que componente la opción de navegación de Dashboard de Resultados
